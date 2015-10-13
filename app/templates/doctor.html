@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>eMed</title>
+		<meta name="description" content="">
+		<meta name="author" content="stan">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		{% load  staticfiles %}
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="stylesheet" href="{% static "bootstrap-3.1.1-dist/css/bootstrap.min.css" %}" />
+		<link rel="stylesheet" href="{% static "css/doctor.css" %}"/>
+		<script src="{% static "bootstrap-3.1.1-dist/js/bootstrap.min.js" %}"></script>
+		<script src="{% static "js/jquery.js" %}"></script>
+	</head>
+
+	<body>
+			<header class="jumbotron">
+				<h1>eMed</h1>
+				<p>Welcome <span class="staff-name">{{profile}}</span></p>
+			<div class="help">
+				<h4>Help topics</h4>
+					<a data-toggle="modal" data-target="#search">Search patient medical records</a>
+					<a data-toggle="modal" data-target="#add">View Patient Basic information</a>
+					<a data-toggle="modal" data-target="#view">View Patient Medical summary</a>
+					<a data-toggle="modal" data-target="#edit">View Patient entire medical history</a>
+					<a data-toggle="modal" data-target="#update">Update Patient medical records</a>
+					<a data-toggle="modal" data-target="#password">Change password</a>
+			</div>
+			
+			<div class="modal fade" id="search" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>Searching patient medical records</h4>
+						</div>
+						
+							<div class="modal-body">
+								<p>On your profile page, input the <span>patient's ID number or birth certificate number</span> on the search form presented.
+									The below image shows the form you should use on your profile</p>
+								<img src="{% static "pics/dsearch.png" %}"/>
+							</div>
+		
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>View Patient Basic information</h4>
+							<div class="modal-body">
+								<p>To view patient's basic information on the system, you need to follow the steps: </p>
+									<ul>
+										<li>Search patient id number or birth certificate number</li>
+										<img src="{% static "pics/dsearch.png" %}" />
+										<li>If patient doesn't exist an error message will be displayed.</li>
+										<img src="{% static "pics/err.png" %}"/>
+										<li>If the patient exists, their basic information will be displayed on the basic information tab</li>
+										<img src="{% static "pics/binfo.png" %}">
+		
+									</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="view" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>View Patient medical information</h4>
+							<div class="modal-body">
+								<p>To view patient's basic information on the system, you need to follow the steps: </p>
+									<ul>
+										<li>Search patient id number or birth certificate number</li>
+										<img src="{% static "pics/dsearch.png" %}" />
+										<li>Click the medical summary tab</li>
+										<img src="{% static "pics/s1.png" %}"/>
+										<li>The medical summary will be presented</li>
+										<img src="{% static "pics/s2.png" %}">
+		
+									</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>View patient entire medical history</h4>
+							<div class="modal-body">
+								<p>To view a patient's entire medical history on the system, you need to follow the steps: </p>
+									<ul>
+										<li>First search the patient's id number or birth certificate number</li>
+										<img src="{% static "pics/dsearch.png" %}" />
+										<li>Click the Medical history tab to view entire medical history</li>
+										<img src="{% static "pics/history.png" %}" />
+										<li>If their medical history don't exist you will get an error message</li>
+										<img src="{% static "pics/derr.png" %}" />
+										<li>If the medical history exists, you will view them.</li>
+										<img src="{% static "pics/mhistory.png" %}">
+							
+									</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>Update Patient medical records</h4>
+							<div class="modal-body">
+								<p>To update patient medical history follow the steps:</p>
+									<ul>
+										<li>Search patient if you haven't yet.</li>
+										<img src="{% static "pics/dsearch.png" %}" />
+										<li>Click the update medical records tab</li>
+										<img src="{% static "pics/u1.png" %}">
+										<li>Fill the presented form with your diagnosis and submit</li>
+										<img src="{% static "pics/u2.png" %}">
+									</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+			
+			<div class="modal fade" id="password" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>Changing your password</h4>
+							<div class="modal-body">
+								<p>To change your password follow the steps:</p>
+									<ul>
+										<li>Click the change password link on the top right corner of your profile page</li>
+										<img src="{% static "pics/pass.png" %}" />
+									</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+				
+				<div class="right">
+					<a class="password" href="/password_change">Change password</a>
+					<a href="/logout">Logout</a>
+				</div>
+			</header>
+		
+		
+			<form action="/profile/search" method="post" class="search">{% csrf_token %}
+				<h3>Enter ID number or Birth certificate number: </h3>
+				{% if password %}
+				<h5 class="err">For security reasons, your password should not be the same as your staff id. Click the change password link to change it</h5>
+				{% endif %}
+				<div class="form-group">
+					{{form.as_p}}
+					
+				</div>
+				
+				<div>
+					<button class="btn btn-success">Search</button>
+				</div>
+			</form>
+			
+		
+
+  <!-- Nav tabs -->
+ 			 <ul class="nav nav-tabs" role="tablist">
+    			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Basic information</a></li>
+    			<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Medical summary</a></li>
+    			<li role="presentation"><a href="/medicalHistory">Medical history</a></li>
+    			<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Update Medical Records</a></li>
+  			</ul>
+
+  <!-- Tab panes -->
+  			<div class="tab-content">
+    			<div role="tabpanel" class="tab-pane active" id="home">
+    							<table class="table table-bordered">
+									<tr>
+										<td><span class="bold">NAME: </span>{{patient_details.firstname}} {{patient_details.lastname}}</td>
+									</tr>
+				
+									<tr>
+										<td><span class="bold">ID NO: </span>{{patient_details.Patientid}}</td>
+									</tr>
+									
+									<tr>
+										<td><span class="bold">BIRTHCERTIFICATE NO: </span>{{patient_details.Birthcertificate_no}}	</td>
+									</tr>
+				
+									<tr>
+										<td><span class="bold">CONTACT: </span>{{patient_details.contact}}</td>
+									</tr>
+				
+									<tr>
+										<td><span class="bold">EMERGENCY CONTACT: </span>{{patient_details.emergencyContact}}</td>
+									</tr>
+				
+									<tr>
+										<td><span class="bold">DATE OF BIRTH: </span>{{patient_details.date_of_birth}}</td>
+									</tr>
+									
+									<tr>
+										<td><span class="bold">LOCATION: </span>{{patient_details.county}}</td>
+									</tr>
+				
+								</table>
+    			</div>
+    			<div role="tabpanel" class="tab-pane" id="profile">
+    				{% if patient %}
+    					<p class="description">The information below contains <span class="bold">{{patient_details.firstname}} {{patient_details.lastname}} </span> medical summary, the last time 
+    						{% if patient.gender == M %}
+    							he 
+    						{% else %}
+    							she
+    						{% endif %}
+    						visited a hospital registered with eMed. Illnesses diagnosed and medication prescribed</p>
+    				
+    				{% endif %}
+    				<div>
+    					   <table class="table table-bordered">
+    					   	<th>{{patient_details.firstname}} {{patient_details.lastname}}</th>
+									<tr>
+										<td><span class="bold">BLOOD GROUP: </span>
+											{{bloodgroup|last}}
+										</td>
+									</tr>
+				
+									<tr>
+										<td><span class="bold">ALLERGIES: </span>
+										   
+										   <div class="allergies">
+											{% for patient in patient_records %}
+    											<p>{{patient.allergies}}</p>
+    											
+    										{% endfor %}
+    									   </div>
+										</td>
+									</tr>
+				
+									<tr>
+										<td><span class="bold">TERMINAL ILLNESSES: </span>
+										 <div class="terminal">
+											{% for patient in patient_records %}
+    											<p>{{patient.terminalIllness}}</p>
+    											
+    										{% endfor %}
+    									   </div>
+    									   
+										</td>
+									</tr>
+				
+									<tr>
+										<td><span class="bold">HEIGHT: </span>
+											{% if height %}
+												{{height|last}} CMS
+											{% endif %}
+										</td>
+									</tr>
+				
+									<tr>
+										<td><span class="bold">WEIGHT: </span>
+											{% if weight %}
+												{{weight|last}} KGS
+											{% endif %}
+										</td>
+									</tr>
+				
+				
+								</table>
+    					
+    				</div>
+    				
+    				<div class="right-summary">
+    					<table class="table table-bordered">
+    						<th>Last visit</th>
+    						<tr>
+    							<td><span class="bold">DOCTOR SEEN: </span>
+    								{% if patient.doctorOnLastVisit %}
+    									{{patient.doctorOnLastVisit}}
+    								{% endif %}
+    							</td>
+    						</tr>
+    						
+    						<tr>
+    							<td><span class="bold">HOSPITAL: </span>
+    								{% if patient.doctorOnLastVisit.hospital %}
+    									{{patient.doctorOnLastVisit.hospital}} hospital
+    								{% endif %}
+    							</td>
+    						</tr>
+    						
+    	
+    						<tr>
+    							<td><span class="bold">ILLNESS: </span>
+    								{{patient.Illnesses}}
+    							</td>
+    						</tr>
+    					
+    						<tr>
+    				
+    							<td><span class="bold">MEDICATION: </span>
+    								{{patient.medication}}
+    							</td>
+    						</tr>
+    						
+    					</table>
+    				</div>
+    			</div>
+    			
+    			<div role="tabpanel" class="tab-pane" id="settings">
+    				
+    				{% if pform %}
+    		
+    				<form action="/updateRecord" method="post" class="search">{% csrf_token %}
+						<h3>Fill the forms below with your diagnosis: </h3>
+							<div class="form-group">
+								{{pform.as_p}}
+					
+							</div>
+							
+							<div>
+								<button class="btn btn-success">Update {{patient_details.firstname}}'s medical records</button>
+							</div>
+					</form>
+					
+					
+					{% else %}
+					
+						<h3>Medical Records Updated successfully</h3>
+					
+					{% endif %}
+    			</div>
+  			</div>
+
+		<script src="{% static "bootstrap-3.1.1-dist/js/bootstrap.min.js" %}"></script>
+		<script src="{% static "js/jquery.js" %}"></script>
+	</body>
+</html>

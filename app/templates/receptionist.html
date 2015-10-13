@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Online Medical Records</title>
+		<meta name="description" content="">
+		<meta name="author" content="stan">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+		{% load staticfiles %}
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="stylesheet" href="{% static "bootstrap-3.1.1-dist/css/bootstrap.min.css" %}">
+		<link rel="stylesheet" href="{% static "css/receptionist.css" %}" />
+		<script src="{% static "js/jquery.js" %}"></script>
+		<script src="{% static "bootstrap-3.1.1-dist/js/bootstrap.min.js" %}"></script>
+	</head>
+
+	<body>
+		<div>
+			<header class="jumbotron">
+				<h1>eMed</h1>
+				<p>Welcome <span class="staff-name">{{profile}}</span></p>
+				
+			<div class="help">
+				<h4>Help topics</h4>
+					<a data-toggle="modal" data-target="#search">Search patient</a>
+					<a data-toggle="modal" data-target="#add">Add patient</a>
+					<a data-toggle="modal" data-target="#edit">Edit patient</a>
+					<a data-toggle="modal" data-target="#password">Change password</a>
+			</div>
+			
+			<div class="modal fade" id="search" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>Searching patients</h4>
+						</div>
+						
+							<div class="modal-body">
+								<p>On your profile page, input the <span>patient's ID number or birth certificate number</span> on the search form presented.
+									The below image shows the form you should use on your profile</p>
+								<img src="{% static "pics/search.png" %}"/>
+							</div>
+		
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="add" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>Adding patients</h4>
+							<div class="modal-body">
+								<p>To add patient's on the system, you need to follow the steps: </p>
+									<ul>
+										<li>Search patient id number or birth certificate number</li>
+										<img src="{% static "pics/search.png" %}" />
+										<li>If patient doesn't exist, you will be presented with a form to add their details on the right side of the page</li>
+										<img src="{% static "pics/add.png" %}"/>
+										<li>Fill in the form and click submit button to add the details to the system</li>
+							
+									</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>Editing patients</h4>
+							<div class="modal-body">
+								<p>To edit a patient's details on the system, you need to follow the steps: </p>
+									<ul>
+										<li>First search the patient's id number or birth certificate number</li>
+										<img src="{% static "pics/search.png" %}" />
+										<li>Click on the link below the search bar to edit their details e. g edit mike's details</li>
+										<img src="{% static "pics/editlink.png" %}" />
+										<li>You will be presented with a form with the patient's details and any information needed can be edited</li>
+										<img src="{% static "pics/edit.png" %}" />
+										<li>Click update medical records to edit their details</li>
+							
+									</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="password" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4>Changing your password</h4>
+							<div class="modal-body">
+								<p>To change your password follow the steps:</p>
+									<ul>
+										<li>Click the change password link on the top right corner of your profile page</li>
+										<img src="{% static "pics/pass.png" %}" />
+									</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+				
+				<div class="right">
+					<a class="password" href="/password_change">Change password</a>
+					<a href="/logout">Logout</a>
+				</div>
+			</header>
+			
+			
+			{% if pform %}
+			
+			<form action="/profile/search" method="post" class="search">{% csrf_token %}
+				<h3>Search Patient's National ID no: </h3>
+				<div class="form-group">
+					{{form.as_p}}
+					
+				</div>
+				
+				<div>
+					<button class="btn btn-success">Search</button>
+				</div>
+			</form>
+
+			
+			<form action="/profile/PatientAdd" method="post" class="addPatient">{% csrf_token %}
+				<h3>Add the patient here</h3>
+				<div class="form-group">
+					{{pform.as_p}}
+				</div>
+				
+				<div class="add">
+					<button class="btn btn-success">Add Patient Information</button>
+				</div>
+			</form>
+			
+			{% elif patient %}
+	
+			
+			<form action="/profile/search" method="post" class="search">{% csrf_token %}
+				<h3>Search Patient's National ID no: </h3>
+				<div class="form-group">
+					{{form.as_p}}
+					
+				</div>
+				
+				<div>
+					<button class="btn btn-success">Search</button>
+				</div>
+			</form>
+			
+			<h3 class="success">Patient details</h3>
+			<table class="table table-bordered">
+				<tr>
+					<td><span class="bold">NAME: </span>{{patient.firstname}} {{patient.lastname}}</td>
+				</tr>
+				
+				<tr>
+					<td><span class="bold">ID NO: </span>{{patient.Patientid}}</td>
+				</tr>
+				
+				<tr>
+					<td><span class="bold">Birth Certificate Number: </span>{{patient.Birthcertificate_no}}</td>
+				</tr>
+				
+				<tr>
+					<td><span class="bold">CONTACT: </span>{{patient.contact}}</td>
+				</tr>
+				
+				<tr>
+					<td><span class="bold">EMERGENCY CONTACT: </span>{{patient.emergencyContact}}</td>
+				</tr>
+				
+				<tr>
+					<td><span class="bold">DATE OF BIRTH: </span>{{patient.date_of_birth}}</td>
+				</tr>
+				
+				<tr>
+					<td><span class="bold">COUNTY: </span>{{patient.county}}</td>
+				</tr>
+				
+			</table>
+			
+			<a class="edit-details" href="/profile/update">Click to <span>edit</span> {{patient.firstname}}'s details</a>
+			
+			{% elif eform %}
+			
+			<form action="/profile/search" method="post" class="search">{% csrf_token %}
+				<h3>Search ID or Birth certificate Number: </h3>
+				<div class="form-group">
+					{{form.as_p}}
+					
+				</div>
+				
+				<div>
+					<button class="btn btn-success">Search</button>
+				</div>
+			</form>
+			
+			
+			<form action="" method="post" class="editPatient">{% csrf_token %}
+				<h3>Edit the patient here</h3>
+				<div class="form-group">
+					{{eform.as_p}}
+				</div>
+				
+				<div class="add">
+					<button class="btn btn-success">Update Patient Information</button>
+				</div>
+			</form>
+			
+			{% else %}
+			
+			<form action="/profile/search" method="post" class="search">{% csrf_token %}
+				<h3>Search ID or Birth certificate Number: </h3>
+				
+				{% if password %}
+				<h5 class="err">For security reasons, your password should not be the same as your staff id. Click the change password link to change it</h5>
+				{% endif %}
+				<div class="form-group">
+					{{form.as_p}}
+					
+				</div>
+				
+				<div>
+					<button class="btn btn-success">Search</button>
+				</div>
+			</form>
+
+			{% endif %}
+			
+			
+		</div>
+		<script src="{% static "bootstrap-3.1.1-dist/js/bootstrap.min.js" %}"></script>
+	</body>
+</html>

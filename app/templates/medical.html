@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>eMed</title>
+		<meta name="description" content="">
+		<meta name="author" content="stan">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		{% load  staticfiles %}
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="stylesheet" href="{% static "bootstrap-3.1.1-dist/css/bootstrap.min.css" %}" />
+		<link rel="stylesheet" href="{% static "css/doctor.css" %}"/>
+		<script src="{% static "bootstrap-3.1.1-dist/js/bootstrap.min.js" %}"></script>
+		<script src="{% static "js/jquery.js" %}"></script>
+	</head>
+
+	<body>
+			<header class="jumbotron">
+				<h1>eMed</h1>
+				<p>Welcome <span class="staff-name">{{profile}}</span></p>
+				
+				<div class="right">
+					<a class="password" href="/password_change">Change password</a>
+					<a href="/logout">Logout</a>
+				</div>
+			</header>
+		
+		
+			<form action="/profile/search" method="post" class="search">{% csrf_token %}
+				<h3>Search Patient's National ID no: </h3>
+				<div class="form-group">
+					{{form.as_p}}
+					
+				</div>
+				
+				<div>
+					<button class="btn btn-success">Search</button>
+				</div>
+			</form>
+			
+			{% if patient_records %}
+    			<div role="tabpanel" class="tab-pane" id="messages">
+    				<p class="describe">Complete <span class="bold">{{patient_details.firstname}} {{patient_details.lastname}}'s </span>medical history</p>
+    				
+    
+    				
+    					{% for patient in patient_records %}
+    					
+    					<div class="medicalrecords">
+    					
+    						<header>
+    							<h4>{{patient.date}}</h4>
+    							<p><span>Doctor visited: </span>{{patient.doctorOnLastVisit}}</p>
+    							<p><span>Hospital visited: </span>{{patient.doctorOnLastVisit.hospital}} hospital</p>
+    							<a class="more" href="{% url 'app.views.medicalDetails' patient.pk %}"><button class="btn btn-default">Read more</button></a>
+    						</header>
+    						
+    						</div>
+    					{% endfor %}
+    					
+    					
+    					
+    					<!-- Next/Prev page links  -->
+{% if patient_records.object_list and patient_records.paginator.num_pages > 1 %}
+<div class="pagination">
+    <span class="step-links">
+        {% if patient_records.has_previous %}
+            <a href= "?page={{ patient_records.previous_page_number }}">previous &lt;&lt; </a>
+        {% endif %}
+
+        <span class="current">
+            &nbsp;Page {{ patient_records.number }} of {{ patient_records.paginator.num_pages }}
+        </span>
+
+        {% if patient_records.has_next %}
+            <a href="?page={{ patient_records.next_page_number }}"> &gt;&gt; next</a>
+        {% endif %}
+    </span>
+</div>
+{% endif %}
+
+{% else %}
+<h3 class="error">Patient Record doesn't exist</h3>
+
+{% endif %}
+	</body>
+</html>

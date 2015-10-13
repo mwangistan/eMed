@@ -1,0 +1,39 @@
+@font-face{
+	font-family: 'bariol';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/bariol.otf');
+}
+body{
+	font-family: 'bariol';
+	font-size: 18px;
+}
+.register{
+	width: 400px;
+	float: right;
+	padding: 10px;
+	margin-right: 200px;
+	margin-top: -70px;
+}
+.register  p{
+	letter-spacing: 1px;
+}
+.title{
+	text-decoration: underline;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.btn-success{
+	margin-left: 320px;
+}
+.info{
+	font-size: 25px;
+	width: 500px;
+	padding: 10px;
+	margin-left: 20px;
+}
+
+.sign-in{
+	font-weight: 700;
+	letter-spacing: 1px;
+}

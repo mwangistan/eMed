@@ -1,0 +1,115 @@
+@font-face{
+	font-family: 'bariol';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/bariol.otf');
+}
+@font-face{
+	font-family: 'regencie';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/RegencieLight.ttf');
+}
+body{
+	font-family: 'bariol';
+	font-size: 18px;
+}
+
+.jumbotron p{
+	font-weight: 100;
+	font-size: 18px;
+	letter-spacing: 1.3px;
+}
+.jumbotron p span{
+	color: black;
+	background-color: #888;
+	padding: 5px;
+}
+.right{
+	text-transform: uppercase;
+	font-weight: 700;
+	float: right;
+}
+.password{
+	padding-right: 20px;
+}
+.search{
+	width: 500px;
+	margin-left: 50px;
+	border-right: 1px solid #c0c0c0;	padding-right: 50px;
+	height: 300px;
+	margin-bottom: 30px;
+}
+.search .btn{
+	margin-left: 385px;
+}
+.add{
+	margin-bottom: 20px;
+}
+.addPatient{
+	float: right;
+	width: 400px;
+	margin-right: 200px;
+	margin-top: -320px;
+	
+}
+.success{
+	float: right;
+	width: 600px;
+	margin-right: 50px;
+	margin-top: -300px;
+}
+table{
+	position: absolute;
+	max-width: 400px;
+	margin-left: 580px;
+	margin-top: -250px;
+	margin-bottom: 20px;
+}
+.bold{
+	font-weight: 700;
+	letter-spacing: 2px;
+	color: #3AC162;
+}
+.help{
+	margin-left: 500px;
+	margin-top: -100px;
+}
+.help a{
+	font-family: 'regencie';
+	display: block;
+	font-size: 15px;
+}
+.modal-header h4{
+	text-transform: uppercase;
+	color: #3AC162;
+	letter-spacing: 1.3px;
+}
+.modal-body p, .modal-body ul{
+	font-size: 15px;
+}
+.modal-body img{
+	opacity: 0.8;
+	width: 300px;
+}
+.edit-details{
+	font-weight: 700;
+	position: absolute;
+	margin-left: 60px;
+	margin-top: -200px;
+}
+.edit-details span{
+	text-decoration: underline;
+}
+.editPatient{
+	margin-top: -330px;
+	margin-left: 700px;
+	width: 500px;
+	
+}
+label{
+	font-size: 13px;
+}
+.err{
+	color: red;
+}

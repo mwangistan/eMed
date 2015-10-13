@@ -1,0 +1,174 @@
+@font-face{
+	font-family: 'bariol';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/bariol.otf');
+}
+@font-face{
+	font-family: 'regencie';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/RegencieLight.ttf');
+}
+body{
+	font-family: 'bariol';
+	font-size: 18px;
+}
+.jumbotron p{
+	font-weight: 100;
+	font-size: 18px;
+	letter-spacing: 1.3px;
+}
+.jumbotron p span{
+	color: black;
+	background-color: #888;
+	padding: 5px;
+}
+.right{
+	text-transform: uppercase;
+	font-weight: 700;
+	float: right;
+}
+.password{
+	padding-right: 20px;
+}
+.search{
+	width: 500px;
+	margin-left: 20px;
+}
+.nav{
+	width: 800px;
+	margin-top: 30px;
+	margin-left: 100px;
+}
+.nav li{
+	padding-left: 20px;
+	font-size: 18px;
+}
+.tab-content{
+	margin-left: 150px;
+	margin-top: 30px;
+	margin-bottom: 500px;
+}
+table{
+	position: absolute;
+	max-width: 400px;
+}
+.bold{
+	font-size: 20px;
+	font-weight: 700;
+	letter-spacing: 2px;
+	color: #3AC162;
+}
+.allergies{
+	padding-left: 160px;
+	margin-top: -25px;
+	min-height: 20px;
+}
+
+.terminal{
+	min-height: 20px;
+	padding-left: 280px;
+	margin-top: -28px;
+}
+.right-summary{
+	float: right;
+	margin-right: 600px;
+}
+.description{
+	width: 800px;
+	font-size: 20px;
+}
+
+header h4{
+	color: black;
+	width: 120px;
+}
+.history{
+	background: #F2F2F2;
+	width: 500px;
+	padding-left: 50px;
+	padding-top: 3px;
+	padding-bottom: 8px;
+	margin: 5px;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 15px;
+	
+}
+.history p{
+	color: black;
+}
+
+.history p span{
+	color: #3AC162;
+	text-transform: uppercase;
+}
+.medicalrecords{
+	background: #F2F2F2;
+	width: 500px;
+	padding-left: 50px;
+	padding-top: 3px;
+	padding-bottom: 8px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 15px;
+	border-radius: 3px;
+}
+.medicalrecords p{
+	color: black;
+}
+
+.medicalrecords p span{
+	color: #3AC162;
+	text-transform: uppercase;
+}
+.describe{
+	margin-top: 10px;
+	margin-left: 30px;
+}
+.pagination{
+	position: absolute;
+	margin-top: 180px;
+	margin-left: -580px;
+	padding-bottom: 20px;
+}
+.error{
+	margin: 50px 0 0 200px;
+	font-weight: 700;
+	font-size: 50px;
+	color: red;
+}
+.err{
+	color: red;
+}
+.modal-header h4{
+	text-transform: uppercase;
+	color: #3AC162;
+	letter-spacing: 1.3px;
+	width: 500px;
+}
+.modal-body p, .modal-body ul{
+	font-size: 15px;
+}
+.modal-body img{
+	opacity: 0.8;
+	width: 300px;
+}
+.date-search{
+	position: absolute;
+	margin-top: -100px;
+	margin-left: 700px;
+	width: 100px;
+}
+.help{
+	margin-left: 500px;
+	margin-top: -100px;
+}
+.help a{
+	font-family: 'regencie';
+	display: block;
+	font-size: 15px;
+}

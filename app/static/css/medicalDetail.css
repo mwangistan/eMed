@@ -1,0 +1,64 @@
+@font-face{
+	font-family: 'bariol';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../fonts/bariol.otf');
+}
+body{
+	font-family: 'bariol';
+	font-size: 18px;
+}
+.jumbotron p{
+	font-weight: 100;
+	font-size: 18px;
+	letter-spacing: 1.3px;
+}
+.jumbotron p span{
+	color: black;
+	background-color: #888;
+	padding: 5px;
+}
+.right{
+	text-transform: uppercase;
+	font-weight: 700;
+	float: right;
+}
+.password{
+	padding-right: 20px;
+}
+.search{
+	width: 500px;
+	margin-left: 20px;
+}
+.medicalrecords{
+	margin-top: 40px;
+	background: #F2F2F2;
+	width: 800px;
+	padding-left: 100px;
+	padding-top: 3px;
+	padding-bottom: 8px;
+	margin-left: 50px;
+	margin-bottom: 20px;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 18px;
+	border-radius: 3px;
+}
+.medicalrecords p{
+	color: black;
+}
+
+.medicalrecords p span{
+	color: #3AC162;
+	text-transform: uppercase;
+}
+.content{
+	font-size: 16px;
+	width: 500px;
+
+}
+.bold{
+	color: #3AC162;
+	font-weight: 700;
+}
+
